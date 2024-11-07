@@ -1,0 +1,48 @@
+Project
+
+def number_guessing_game():
+    '''A simple number guessing game for two players.'''
+
+    print("Welcome to the Number Guessing Game. Brought to you by Carlos!")
+    print("Player 1, please enter a number between 1 and 500 for Player 2 to guess.")
+    # Ask Player 1 to input the number to guess
+    while True:
+        number_to_guess = input("\nEnter the number to guess (between 1 and 500): ")
+        try:
+            number_to_guess = int(number_to_guess)
+            if 1 <= number_to_guess <= 500:
+                break  # Valid number entered, exit the loop
+            else:
+                print("\nPlease enter a number between 1 and 500.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+    attempts = 0  # To track the number of attempts the user has made
+    print("\nPlayer 2, now it's your turn to guess the number!")
+    while True:
+        # Ask Player 2 for their guess
+        guess = input("\nEnter your guess (between 1 and 500): ")
+        # Convert the guess to an integer and handle invalid input
+        try:
+            guess = int(guess)
+            if not 1 <= guess <= 500:
+                print("\nPlease enter a number between 1 and 500.")
+                continue
+        except ValueError:
+            print("Please enter a valid number.")
+            continue
+        attempts += 1  # Increment the number of attempts
+        # Check if the guess is correct, too high, or too low
+        if guess < number_to_guess:
+            print("Too low! Try again.")
+        elif guess > number_to_guess:
+            print("Too high! Try again.")
+        else:
+            print(f"Congratulations! You've guessed the number in {attempts} attempts.")
+            break  # Exit the loop if the guess is correct
+# Start the game
+if __name__ == "__main__":
+    import os
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
+    number_guessing_game()
+34
